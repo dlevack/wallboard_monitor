@@ -16,3 +16,9 @@ the information and pulling realtime data from the database. Once the system rec
 refreshes.
 
 Unfortunatly, all of the code written for my previous job is still there and I am not. So, I will be rewiting it from scratch.
+
+Requirements
+------------
+
+- MySQL 5
+- PHP 5
