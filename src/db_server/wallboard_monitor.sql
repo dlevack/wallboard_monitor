@@ -12,7 +12,7 @@ create table Host_Table (HOST_ID int auto_increment not null,
 			 HOST_STATUS int not null default 1,
                          Primary Key(HOST_ID));
 
-create table Status_Table (STATUS_ID in auto_increment not null,
+create table Status_Table (STATUS_ID int auto_increment not null,
        	     		   STATUS_NAME varchar(10) not null,
 			   STATUS_COLOR varchar(10) not null,
 			   Primary Key(STATUS_ID));
