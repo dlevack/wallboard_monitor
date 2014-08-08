@@ -3,7 +3,7 @@ TODO List
 
 * Add Database
  - Database create script
- - ~~Database config~~ - Completed
+ - ~~Database config~~ - **Completed**
  - Database class for accessing database
 * Add Web Server
  - Create web interface to display data
