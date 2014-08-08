@@ -10,3 +10,8 @@ TODO List
  - PHP Code
  - MySQL Database connection
  - Generate graphic files
+* Add Socket Server
+ - Perl Code
+ - Listen on TCP Port
+ - MySQL Database connection
+ - Run as Daemon
