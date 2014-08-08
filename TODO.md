@@ -15,3 +15,5 @@ TODO List
  - Listen on TCP Port
  - MySQL Database connection
  - Run as Daemon
+* Create polling scripts
+ - Poll clients via snmp/ssh/http
