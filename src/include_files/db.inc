@@ -1,9 +1,32 @@
 <?php
+/**
+ * This is the db.inc file it will provide the wall_db class.
+ * 
+ * @author  Dan Levack <dan@levack.net>
+ * @package wallboard_monitor
+ */
+
+/**
+ * This is the wall_db class. It will provide methods for interacting with the
+ * MySQL database for the wallboard_monitor system.
+ */
 
 class wall_db {
+  
+  /**
+   * @var handler $CONN Database connection handler
+   */
   public $CONN;
+  
+  /**
+   * @var array $INFO Array of connection information for the database
+   */
   public $INFO = array();
   
+  /**
+   * This is the constructor. It will read the config file and create the
+   * database connection.
+   */
   public function __construct() {
     $this->INFO = parse_ini_file('/opt/wallboard_monitor/conf/db.conf',
 				 TRUE);
@@ -14,6 +37,12 @@ class wall_db {
     return;
   }
   
+  /**
+   * Returns the id for a given status name
+   * 
+   * @param  string $name Name of status to lookup
+   * @return int    $id   ID of status
+   */
   public function get_status_id_by_name($name = '') {
     $id = 0;
     $query  = 'select STATUS_ID from Status_Table where STATUS_NAME="'.$name.'"';
@@ -25,6 +54,12 @@ class wall_db {
     return($id);
   }
   
+  /**
+   * Returns the id for a given status color
+   *
+   * @param  string $color Color of status to lookup
+   * @return int    $id    ID of status
+   */
   public function get_status_id_by_color($color = '') {
     $id = 0;
     $query  = 'select STATUS_ID from Status_Table where STATUS_COLOR="'.$color.'"';
@@ -36,6 +71,12 @@ class wall_db {
     return($id);
   }
   
+  /**
+   * Returns the name for a given status id
+   *
+   * @param  int    $id   ID of status to lookup
+   * @return string $name Name of status
+   */
   public function get_status_name_by_id($id = 0) {
     $name = '';
     $query  = 'select STATUS_NAME from Status_Table where STATUS_ID='.$id.'';
@@ -47,6 +88,12 @@ class wall_db {
     return($name);
   }
   
+  /**
+   * Returns the color for a given status id
+   *
+   * @param  int    $id    ID of status to lookup
+   * @return string $color color of status
+   */
   public function get_status_color_by_id($id = 0) {
     $color = '';
     $query  = 'select STATUS_COLOR from Status_Table where STATUS_ID='.$id.'';
@@ -58,6 +105,11 @@ class wall_db {
     return($color);
   }
   
+  /**
+   * Returns an array of status
+   *
+   * @return array $status_list Array of status
+   */
   public function get_status_list() {
     $status_list = array();
     $query  = 'select * from Status_Table';
@@ -71,6 +123,9 @@ class wall_db {
     return($status_list);
   }
   
+  /**
+   * This is the destructor. It will close the database connection.
+   */
   public function __destruct() {
     @mysql_close($this->CONN);
     return;
