@@ -1,0 +1,21 @@
+body {
+    background-color:'black';
+    background-repeat:repeat-y;
+}
+
+body.white {
+    background-image:url('/images/white-bg.jpg');
+}
+
+body.green {
+    background-image:url('/images/green-bg.jpg');
+}
+
+body.yellow {
+    background-image:url('/images/yellow-bg.jpg');
+}
+
+body.red {
+    background-image:url('/images/red-bg.jpg');
+}
+
