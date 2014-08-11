@@ -23,6 +23,3 @@ else
 	echo "Unable to create database. Please edit SQL file to change database name."
     fi
 fi
-
-# echo $USER
-# echo $PASS
