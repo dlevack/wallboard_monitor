@@ -30,10 +30,11 @@ class wall_db {
   public function __construct() {
     $this->INFO = parse_ini_file('/opt/wallboard_monitor/conf/db.conf',
 				 TRUE);
-    $this->CONN = @mysql_connect($this->INFO['host'],
-				 $this->INFO['user'],
-				 $this->INFO['pass']);
-    @mysql_select_db($this->INFO['name']);
+    error_reporting(0);
+    $this->CONN = new mysqli($this->INFO['host'],
+			     $this->INFO['user'],
+			     $this->INFO['pass'],
+			     $this->INFO['name']);
     return;
   }
   
@@ -46,11 +47,11 @@ class wall_db {
   public function get_status_id_by_name($name = '') {
     $id = 0;
     $query  = 'select STATUS_ID from Status_Table where STATUS_NAME="'.$name.'"';
-    $result = @mysql_query($query);
+    $result = $this->CONN->query($query);
     unset($query);
-    $row = @mysql_fetch_assoc($result);
+    $row = $result->fetch_row();
     unset($result);
-    $id = $row['STATUS_ID'];
+    $id = $row[0];
     return($id);
   }
   
@@ -63,11 +64,11 @@ class wall_db {
   public function get_status_id_by_color($color = '') {
     $id = 0;
     $query  = 'select STATUS_ID from Status_Table where STATUS_COLOR="'.$color.'"';
-    $result = @mysql_query($query);
+    $result = $this->CONN->query($query);
     unset($query);
-    $row = @mysql_fetch_assoc($result);
+    $row = $result->fetch_row();
     unset($result);
-    $id = $row['STATUS_ID'];
+    $id = $row[0];
     return($id);
   }
   
@@ -80,11 +81,11 @@ class wall_db {
   public function get_status_name_by_id($id = 0) {
     $name = '';
     $query  = 'select STATUS_NAME from Status_Table where STATUS_ID='.$id.'';
-    $result = @mysql_query($query);
+    $result = $this->CONN->query($query);
     unset($query);
-    $row = @mysql_fetch_assoc($result);
+    $row = $result->fetch_row();
     unset($result);
-    $name = $row['STATUS_NAME'];
+    $name = $row[0];
     return($name);
   }
   
@@ -97,11 +98,11 @@ class wall_db {
   public function get_status_color_by_id($id = 0) {
     $color = '';
     $query  = 'select STATUS_COLOR from Status_Table where STATUS_ID='.$id.'';
-    $result = @mysql_query($query);
+    $result = $this->CONN->query($query);
     unset($query);
-    $row = @mysql_fetch_assoc($result);
+    $row = $result->fetch_row();
     unset($result);
-    $color = $row['STATUS_COLOR'];
+    $color = $row[0];
     return($color);
   }
   
@@ -112,14 +113,19 @@ class wall_db {
    */
   public function get_status_list() {
     $status_list = array();
-    $query  = 'select * from Status_Table';
-    $result = @mysql_query($query);
-    unset($query);
-    while ($row = @mysql_fetch_assoc($result)) {
-      $status_list[$row['STATUS_NAME']] = array('id'    => $row['STATUS_ID'],
-						'color' => $row['STATUS_COLOR']);
+    $query  = 'select STATUS_ID,STATUS_NAME,STATUS_COLOR from Status_Table';
+    if ($this->CONN->multi_query($query)) {
+      do {
+	if ($result = $this->CONN->use_result()) {
+	  while ($row = $result->fetch_row()) {
+	    $status_list[$row[1]] = array('id'    => $row[0],
+					  'color' => $row[2]);
+	  }
+	  $result->close();
+	}
+      } while ($this->CONN->next_result());
     }
-    unset($result);
+    unset($query);
     return($status_list);
   }
   
@@ -127,7 +133,7 @@ class wall_db {
    * This is the destructor. It will close the database connection.
    */
   public function __destruct() {
-    @mysql_close($this->CONN);
+    $this->CONN->close();
     return;
   }
 }
