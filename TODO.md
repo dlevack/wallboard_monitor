@@ -9,7 +9,7 @@ TODO List
  - Create web interface to display data
  - PHP Code
  - MySQL Database connection
- - Generate graphic files
+ - ~~Generate graphic files~~ - **Completed**
 * Add Socket Server
  - Perl Code
  - Listen on TCP Port
