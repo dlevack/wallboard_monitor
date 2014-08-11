@@ -1,4 +1,4 @@
 include_files
 =============
 
-* db.inc - PHP class file for MySQL database connections
+* db.php - PHP class file for MySQL database connections
