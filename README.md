@@ -21,6 +21,7 @@ Requirements
 ------------
 
 - MySQL 5
+- Perl 5
 - PHP 5
 - Perl Modules
  - Config::Simple
