@@ -1,11 +1,14 @@
 #!/usr/bin/php
 <?php
+  /**
+   * Require our include files.
+   */
+require('../include_files/ini_files.php');
 require('../include_files/colors.php');
 $colors = new Colors();
 
 // Read our database config file to get the connection information
-$conf = parse_ini_file('../conf_files/db.conf',
-		       TRUE);
+$conf   = new ini_files('../conf_files/db.conf');
 
 $sting_len = 100;
 
@@ -29,7 +32,7 @@ exec('stty echo');
 echo "\n\n";
 
 // Connect to the database
-$mysqli    = new mysqli($conf['host'],
+$mysqli    = new mysqli($conf->CONFIG['host'],
 			$root_user,
 			$root_pass,
 			'mysql');
@@ -45,9 +48,9 @@ if (db_found()) {
   // Database already exists
   // Ask user about recreating it
   echo status_out("Found")."\n\n";
-  echo "Would you like to remove the existing ".$conf['name'];
+  echo "Would you like to remove the existing ".$conf->CONFIG['name'];
   echo " database and recreate it?\n";
-  echo $colors->getColoredString("Any data in the ".$conf['name'].
+  echo $colors->getColoredString("Any data in the ".$conf->CONFIG['name'].
 				 " database will be lost!\n",
 				 'red');
   echo "Recreate [yes/";
@@ -63,13 +66,13 @@ if (db_found()) {
       $recreate == 'Y') {
     // Recreate database
     // Drop existing database
-    $string = 'Dropping database: '.$conf['name'];
+    $string = 'Dropping database: '.$conf->CONFIG['name'];
     echo str_pad($string,
 		 $sting_len,
 		 '.');
     unset($string);
 
-    $query = 'drop database '.$conf['name'];
+    $query = 'drop database '.$conf->CONFIG['name'];
     $mysqli->query($query);
     unset($query);
     
@@ -77,7 +80,7 @@ if (db_found()) {
       // Drop successful
       echo status_out("OK","green")."\n";      
       // Delete User
-      $query = 'delete from user where User="'.$conf['user'].'"';
+      $query = 'delete from user where User="'.$conf->CONFIG['user'].'"';
       $mysqli->query($query);
       unset($query);
       // Add the database
@@ -100,7 +103,7 @@ if (db_found()) {
     }
   } else {
     // Do not recreate database
-    echo $colors->getColoredString("Database ".$conf['name'].
+    echo $colors->getColoredString("Database ".$conf->CONFIG['name'].
 				   " exists.",
 				   "red");
     echo "\n";
@@ -132,12 +135,12 @@ function add_db() {
   global $conf;
   global $sting_len;
   global $mysqli;
-  $string = 'Creating database: '.$conf['name'];
+  $string = 'Creating database: '.$conf->CONFIG['name'];
   echo str_pad($string,
 	       $sting_len,
 	       '.');
   unset($string);
-  $query = 'create database '.$conf['name'];
+  $query = 'create database '.$conf->CONFIG['name'];
   $mysqli->query($query);
   unset($query);
   return;
@@ -147,19 +150,19 @@ function add_user() {
   global $conf;
   global $sting_len;
   global $mysqli;
-  $string = 'Creating '.$conf['user'].' user';
+  $string = 'Creating '.$conf->CONFIG['user'].' user';
   echo str_pad($string,
                $sting_len,
                '.');
   unset($string);
   // Add access from remote hosts
-  $query  = "grant all of ".$conf['name'].".* to '".$conf['name']."'@'%' ";
-  $query .= "identified by '".$conf['pass']."'";
+  $query  = "grant all of ".$conf->CONFIG['name'].".* to '".$conf->CONFIG['name']."'@'%' ";
+  $query .= "identified by '".$conf->CONFIG['pass']."'";
   $mysqli->query($query);
   unset($query);
   // Add access from localhost
-  $query  = "grant all of ".$conf['name'].".* to '".$conf['name']."'@'localhost' ";
-  $query .= "identified by '".$conf['pass']."'";
+  $query  = "grant all of ".$conf->CONFIG['name'].".* to '".$conf->CONFIG['name']."'@'localhost' ";
+  $query .= "identified by '".$conf->CONFIG['pass']."'";
   $mysqli->query($query);
   unset($query);
   // Flush privs
@@ -180,7 +183,7 @@ function create_db() {
                '.');
   unset($string);
   
-  $mysqli->select_db($conf['name']);
+  $mysqli->select_db($conf->CONFIG['name']);
   $query  = 'create table Host_Table (HOST_ID int auto_increment not null,';
   $query .= 'HOST_NAME varchar(50) not null,';
   $query .= 'HOST_IP varchar(15) not null,';
@@ -266,7 +269,7 @@ function db_found() {
     do {
       if ($result = $mysqli->use_result()) {
 	while ($row = $result->fetch_assoc()) {
-	  if ($row['Database'] == $conf['name']) {
+	  if ($row['Database'] == $conf->CONFIG['name']) {
 	    return(TRUE);
 	  }
 	}
