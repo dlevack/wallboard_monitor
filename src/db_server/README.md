@@ -9,13 +9,11 @@ file list
 
 * README.md - This file
 * db_config.php - PHP script for editing the DB config file
-* drop_db.sql - SQL file for dropping the database and removing the user.
-* install_db.sh - Bash script for installing the database
-* wallboard_monitor.sql - SQL file to create the database, add the user, and grand the user access to the database
+* install_db.php - PHP script for installing the database
 
 Setup
 -----
 
 `./db_config.php`
 
-`./install_db.sh`
+`./install_db.php`
