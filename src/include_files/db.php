@@ -49,9 +49,9 @@ class wall_db {
     $query  = 'select STATUS_ID from Status_Table where STATUS_NAME="'.$name.'"';
     $result = $this->CONN->query($query);
     unset($query);
-    $row = $result->fetch_row();
+    $row = $result->fetch_assoc();
     unset($result);
-    $id = $row[0];
+    $id = $row['STATUS_ID'];
     return($id);
   }
   
@@ -66,9 +66,9 @@ class wall_db {
     $query  = 'select STATUS_ID from Status_Table where STATUS_COLOR="'.$color.'"';
     $result = $this->CONN->query($query);
     unset($query);
-    $row = $result->fetch_row();
+    $row = $result->fetch_assoc();
     unset($result);
-    $id = $row[0];
+    $id = $row['STATUS_ID'];
     return($id);
   }
   
@@ -83,9 +83,9 @@ class wall_db {
     $query  = 'select STATUS_NAME from Status_Table where STATUS_ID='.$id.'';
     $result = $this->CONN->query($query);
     unset($query);
-    $row = $result->fetch_row();
+    $row = $result->fetch_assoc();
     unset($result);
-    $name = $row[0];
+    $name = $row['STATUS_NAME'];
     return($name);
   }
   
@@ -100,9 +100,9 @@ class wall_db {
     $query  = 'select STATUS_COLOR from Status_Table where STATUS_ID='.$id.'';
     $result = $this->CONN->query($query);
     unset($query);
-    $row = $result->fetch_row();
+    $row = $result->fetch_assoc();
     unset($result);
-    $color = $row[0];
+    $color = $row['STATUS_COLOR'];
     return($color);
   }
   
@@ -117,9 +117,9 @@ class wall_db {
     if ($this->CONN->multi_query($query)) {
       do {
 	if ($result = $this->CONN->use_result()) {
-	  while ($row = $result->fetch_row()) {
-	    $status_list[$row[1]] = array('id'    => $row[0],
-					  'color' => $row[2]);
+	  while ($row = $result->fetch_assoc()) {
+	    $status_list[$row['STATUS_NAME']] = array('id'    => $row['STATUS_ID'],
+						      'color' => $row['STATUS_COLOR']);
 	  }
 	  $result->close();
 	}
