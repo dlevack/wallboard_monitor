@@ -1,6 +1,6 @@
 <?php
 /**
- * Provides methods for changing the color of text outpot for CLI scripts.
+ * Provides methods for changing the color of text output for CLI scripts.
  * 
  * This is the colors.php file. It will provides methods for changing the
  * color of text output for CLI scripts.
