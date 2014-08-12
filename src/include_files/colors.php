@@ -10,7 +10,7 @@
  */
 
 /**
- * Provides methods for changing the color of text outpot for CLI scripts.
+ * Provides methods for changing the color of text output for CLI scripts.
  */ 
 
 class Colors {
