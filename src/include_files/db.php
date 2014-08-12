@@ -28,13 +28,13 @@ class wall_db {
    * database connection.
    */
   public function __construct() {
-    $this->INFO = parse_ini_file('/opt/wallboard_monitor/conf/db.conf',
-				 TRUE);
+    require_once('ini_files.php');
+    $this->INFO = new ini_files('../conf_files/db.conf');
     error_reporting(0);
-    $this->CONN = new mysqli($this->INFO['host'],
-			     $this->INFO['user'],
-			     $this->INFO['pass'],
-			     $this->INFO['name']);
+    $this->CONN = new mysqli($this->INFO->CONFIG['host'],
+			     $this->INFO->CONFIG['user'],
+			     $this->INFO->CONFIG['pass'],
+			     $this->INFO->CONFIG['name']);
     return;
   }
   
