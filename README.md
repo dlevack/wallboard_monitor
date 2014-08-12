@@ -20,8 +20,10 @@ Unfortunatly, all of the code written for my previous job is still there and I a
 Requirements
 ------------
 
-- MySQL 5
-- Perl 5
-- PHP 5
+Tested with the following. May work on earlier versions but has not been tested.
+
+- MySQL 5.1.73-3
+- Perl 5.10.1-136
+- PHP 5.3.3-27
 - Perl Modules
  - Config::Simple
