@@ -17,4 +17,5 @@ Setup
 -----
 
 `./db_config.php`
+
 `./install_db.sh`
