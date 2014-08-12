@@ -156,12 +156,12 @@ function add_user() {
                '.');
   unset($string);
   // Add access from remote hosts
-  $query  = "grant all of ".$conf->CONFIG['name'].".* to '".$conf->CONFIG['name']."'@'%' ";
+  $query  = "grant all on ".$conf->CONFIG['name'].".* to '".$conf->CONFIG['user']."'@'%' ";
   $query .= "identified by '".$conf->CONFIG['pass']."'";
   $mysqli->query($query);
   unset($query);
   // Add access from localhost
-  $query  = "grant all of ".$conf->CONFIG['name'].".* to '".$conf->CONFIG['name']."'@'localhost' ";
+  $query  = "grant all on ".$conf->CONFIG['name'].".* to '".$conf->CONFIG['user']."'@'localhost' ";
   $query .= "identified by '".$conf->CONFIG['pass']."'";
   $mysqli->query($query);
   unset($query);
