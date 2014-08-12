@@ -3,7 +3,7 @@
  * Provides methods for changing the color of text outpot for CLI scripts.
  * 
  * This is the colors.php file. It will provides methods for changing the
- * color of text outpot for CLI scripts.
+ * color of text output for CLI scripts.
  * 
  * @author Dan Levack <dan@levack.net>
  * @version 1.1
