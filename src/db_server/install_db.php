@@ -265,8 +265,8 @@ function db_found() {
   if ($mysqli->multi_query($query)) {
     do {
       if ($result = $mysqli->use_result()) {
-	while ($row = $result->fetch_row()) {
-	  if ($row[0] == $conf['name']) {
+	while ($row = $result->fetch_assoc()) {
+	  if ($row['Database'] == $conf['name']) {
 	    return(TRUE);
 	  }
 	}
