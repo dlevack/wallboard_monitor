@@ -257,6 +257,19 @@ function create_db() {
   $mysqli->query($query);
   unset($query);
   
+  $query  = 'create table User_Table (USER_ID int not null,';
+  $query .= 'USER_NAME varchar(20) not null,';
+  $query .= 'USER_PASS varchar(255) not null,';
+  $query .= 'Primary Key(USER_ID))';
+  $mysqli->query($query);
+  unset($query);
+  
+  $pass   = md5("admin");
+  $query  = "insert into User_Table values ('','admin','".$pass."')";
+  unset($pass);
+  $mysqli->query($query);
+  unset($query);
+  
   echo status_out("OK","green")."\n";
   return;
 }
