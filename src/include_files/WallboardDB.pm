@@ -6,7 +6,11 @@ use DBI;
 
 use Exporter qw(import);
 
-our @EXPORT = qw($cfg get_status_id_by_name);
+our @EXPORT = qw($cfg
+                 get_status_id_by_name
+                 get_status_id_by_color
+                 get_status_name_by_id
+                 get_status_color_by_id);
 
 our $cfg = new Config::Simple('../conf_files/db.conf');
 
