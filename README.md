@@ -27,3 +27,4 @@ Tested with the following. May work on earlier versions but has not been tested.
 - PHP 5.3.3-27
 - Perl Modules
  - Config::Simple
+ - DBI
