@@ -257,7 +257,7 @@ function create_db() {
   $mysqli->query($query);
   unset($query);
   
-  $query  = 'create table User_Table (USER_ID int not null,';
+  $query  = 'create table User_Table (USER_ID int auto_increment not null,';
   $query .= 'USER_NAME varchar(20) not null,';
   $query .= 'USER_PASS varchar(255) not null,';
   $query .= 'Primary Key(USER_ID))';
