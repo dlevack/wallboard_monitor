@@ -19,4 +19,14 @@ function mysql_auth($user = '',
   unset($db);
   return(FALSE);
 }
+
+function openldap_auth($user = '',
+		       $pass = '') {
+  return(FALSE);
+}
+
+function ad_auth($user = '',
+		 $pass = '') {
+  return(FALSE);
+}
 ?>
