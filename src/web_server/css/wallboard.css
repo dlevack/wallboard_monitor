@@ -1,21 +1,24 @@
 body {
-    background-color:'black';
-    background-repeat:repeat-y;
+    background-position: left,right,center;
+    background-repeat:repeat-y,repeat-y,repeat;
+}
+
+body.admin {
 }
 
 body.white {
-    background-image:url('/images/white-bg.jpg');
+    background-image:url('/images/white-bg.jpg'),url('/images/white-bg2.jpg'),url('/images/black.png');
 }
 
 body.green {
-    background-image:url('/images/green-bg.jpg');
+    background-image:url('/images/green-bg.jpg'),url('/images/green-bg2.jpg'),url('/images/black.png');
 }
 
 body.yellow {
-    background-image:url('/images/yellow-bg.jpg');
+    background-image:url('/images/yellow-bg.jpg'),url('/images/yellow-bg2.jpg'),url('/images/black.png');
 }
 
 body.red {
-    background-image:url('/images/red-bg.jpg');
+    background-image:url('/images/red-bg.jpg'),url('/images/red-bg2.jpg'),url('/images/black.png');
 }
 
