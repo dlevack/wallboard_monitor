@@ -10,7 +10,8 @@ our @EXPORT = qw($cfg
                  get_status_id_by_name
                  get_status_id_by_color
                  get_status_name_by_id
-                 get_status_color_by_id);
+                 get_status_color_by_id
+                 get_status_color_list);
 
 our $cfg = new Config::Simple('../conf_files/db.conf');
 
@@ -82,4 +83,20 @@ sub get_status_color_by_id {
     return $id;
 }
 
+sub get_status_color_list {
+    my @colors;
+    my $query = 'select STATUS_COLOR from Status_Table';
+    my $dbh = DBI->connect('dbi:mysql:'.$cfg->param('name'),
+                           $cfg->param('user'),
+			   $cfg->param('pass'));
+    my $sth = $dbh->prepare($query);
+    $sth->execute;
+    while (my @row = $sth->fetchrow_array) {
+	push(@colors,
+	     $row['STATUS_COLOR']);
+    }
+    $sth->finish();
+    $dbh->disconnect();
+    return @colors;
+}
 1;
