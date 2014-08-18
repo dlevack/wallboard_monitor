@@ -3,8 +3,8 @@
 /**
   * Require our include files.
   */
-require('../include_files/ini_files.php');
-$ini = new ini_files('/opt/wallboard_minitor/conf_files/db.conf');
+require('/opt/wallboard_monitor/include_files/ini_files.php');
+$ini = new ini_files('/opt/wallboard_monitor/conf_files/db.conf');
 
 if (!isset($ini->CONFIG['host']) or
     $ini->CONFIG['host'] == '') {

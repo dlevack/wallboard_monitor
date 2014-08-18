@@ -3,12 +3,12 @@
   /**
    * Require our include files.
    */
-require('../include_files/ini_files.php');
-require('../include_files/colors.php');
+require('/opt/wallboard_monitor/include_files/ini_files.php');
+require('/opt/wallboard_monitor/include_files/colors.php');
 $colors = new Colors();
 
 // Read our database config file to get the connection information
-$conf   = new ini_files('/opt/wallboard_minitor/conf_files/db.conf');
+$conf   = new ini_files('/opt/wallboard_monitor/conf_files/db.conf');
 
 $sting_len = 100;
 
