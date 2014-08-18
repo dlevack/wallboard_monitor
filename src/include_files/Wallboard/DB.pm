@@ -13,7 +13,7 @@ our @EXPORT = qw($cfg
                  get_status_color_by_id
                  get_status_color_list);
 
-our $cfg = new Config::Simple('/opt/wallboard_minitor/conf_files/db.conf');
+our $cfg = new Config::Simple('/opt/wallboard_monitor/conf_files/db.conf');
 
 sub get_status_id_by_name {
     my $name  = shift(@_);
