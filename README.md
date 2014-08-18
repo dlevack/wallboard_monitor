@@ -22,7 +22,8 @@ Requirements
 
 Tested with the following. May work on earlier versions but has not been tested.
 
-- IE 10 or higher
+- IE 10 or higher (If using IE to view site)
+- Apache 2.2
 - MySQL 5.1.73-3
 - Perl 5.10.1-136
 - PHP 5.3.3-27
