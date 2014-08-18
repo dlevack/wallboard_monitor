@@ -4,7 +4,7 @@
   * Require our include files.
   */
 require('../include_files/ini_files.php');
-$ini = new ini_files('../conf_files/db.conf');
+$ini = new ini_files('/opt/wallboard_minitor/conf_files/db.conf');
 
 if (!isset($ini->CONFIG['host']) or
     $ini->CONFIG['host'] == '') {
