@@ -1,5 +1,5 @@
-web_server
-==========
+web
+===
 
 * README.md - This file
 * apache_conf - Config files for apache
