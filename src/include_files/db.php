@@ -29,7 +29,7 @@ class wall_db {
    */
   public function __construct() {
     require_once('ini_files.php');
-    $this->INFO = new ini_files('../conf_files/db.conf');
+    $this->INFO = new ini_files('/opt/wallboard_monitor/conf_files/db.conf');
     error_reporting(0);
     $this->CONN = new mysqli($this->INFO->CONFIG['host'],
 			     $this->INFO->CONFIG['user'],

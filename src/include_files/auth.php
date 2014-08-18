@@ -1,7 +1,7 @@
 <?php
 function mysql_auth($user = '',
 		    $pass = '') {
-  require_once('db.php');
+  require_once('/opt/wallboard_monitor/include_files/db.php');
   $db     = new wall_db();
   $pass   = md5($pass);
   $query  = "select USER_ID from User_Table where ";
