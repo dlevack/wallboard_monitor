@@ -5,7 +5,7 @@ Summary:        Wallboard monitoring system web server files
 Vendor:         levack.net
 Group:          monitoring
 License:        GPL
-URL:            http://www.levack.net
+URL:            https://github.com/dlevack/wallboard_monitor
 Source0:        %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
