@@ -27,9 +27,9 @@ install -m 0755 -d $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/images
 install -m 0755 -d $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/css
 install -m 0755 -d $RPM_BUILD_ROOT/etc/httpd/conf.d
 install -m 0755 -d $RPM_BUILD_ROOT/opt/wallboard_monitor/sbin
-install -m 0644 wallboard_monitor.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/wallboard_monitor.conf
-install -m 0744 gen_wallboard_images.pl $RPM_BUILD_ROOT/opt/wallboard_monitor/sbin/gen_wallboard_images.pl
-install -m 0644 wallboard.css $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/css/wallboard.css
+install -m 0644 apache_conf/wallboard_monitor.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/wallboard_monitor.conf
+install -m 0744 sbin/gen_wallboard_images.pl $RPM_BUILD_ROOT/opt/wallboard_monitor/sbin/gen_wallboard_images.pl
+install -m 0644 css/wallboard.css $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/css/wallboard.css
 %clean
 rm -rf $RPM_BUILD_ROOT
 

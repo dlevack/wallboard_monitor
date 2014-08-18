@@ -25,13 +25,13 @@ install -m 0755 -d $RPM_BUILD_ROOT/opt/wallboard_monitor/include_files
 install -m 0755 -d $RPM_BUILD_ROOT/opt/wallboard_monitor/conf_files
 install -m 0755 -d $RPM_BUILD_ROOT/opt/wallboard_monitor/sbin
 install -m 0755 -d $RPM_BUILD_ROOT/usr/share/perl5/Wallboard
-install -m 0644 auth.php $RPM_BUILD_ROOT/opt/wallboard_monitor/include_files/auth.php
-install -m 0644 colors.php $RPM_BUILD_ROOT/opt/wallboard_monitor/include_files/colors.php
-install -m 0644 db.php $RPM_BUILD_ROOT/opt/wallboard_monitor/include_files/db.php
-install -m 0644 ini_files.php $RPM_BUILD_ROOT/opt/wallboard_monitor/include_files/ini_files.php
-install -m 0744 db_config.php $RPM_BUILD_ROOT/opt/wallboard_monitor/sbin/db_config.php
-install -m 0644 DB.pm $RPM_BUILD_ROOT/usr/share/perl5/Wallboard/DB.pm
-install -m 0644 db.conf $RPM_BUILD_ROOT/opt/wallboard_monitor/conf_files/db.conf
+install -m 0644 include_files/auth.php $RPM_BUILD_ROOT/opt/wallboard_monitor/include_files/auth.php
+install -m 0644 include_files/colors.php $RPM_BUILD_ROOT/opt/wallboard_monitor/include_files/colors.php
+install -m 0644 include_files/db.php $RPM_BUILD_ROOT/opt/wallboard_monitor/include_files/db.php
+install -m 0644 include_files/ini_files.php $RPM_BUILD_ROOT/opt/wallboard_monitor/include_files/ini_files.php
+install -m 0744 sbin/db_config.php $RPM_BUILD_ROOT/opt/wallboard_monitor/sbin/db_config.php
+install -m 0644 include_files/Wallboard/DB.pm $RPM_BUILD_ROOT/usr/share/perl5/Wallboard/DB.pm
+install -m 0644 conf_files/db.conf $RPM_BUILD_ROOT/opt/wallboard_monitor/conf_files/db.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
