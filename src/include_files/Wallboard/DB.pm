@@ -24,9 +24,7 @@ sub get_status_id_by_name {
 			   $cfg->param('pass'));
     my $sth = $dbh->prepare($query);
     $sth->execute;
-    my @row = $sth->fetchrow_array;
-    $id     = $row[0];
-    undef @row;
+    ($id)   = $sth->fetchrow_array;
     $sth->finish();
     $dbh->disconnect();
     return $id;
@@ -41,9 +39,7 @@ sub get_status_id_by_color {
                            $cfg->param('pass'));
     my $sth = $dbh->prepare($query);
     $sth->execute;
-    my @row = $sth->fetchrow_array;
-    $id     = $row[0];
-    undef @row;
+    ($id)   = $sth->fetchrow_array;
     $sth->finish();
     $dbh->disconnect();
     return $id;
@@ -58,12 +54,10 @@ sub get_status_name_by_id {
                            $cfg->param('pass'));
     my $sth = $dbh->prepare($query);
     $sth->execute;
-    my @row = $sth->fetchrow_array;
-    $name   = $row[0];
-    undef @row;
+    ($name) = $sth->fetchrow_array;
     $sth->finish();
     $dbh->disconnect();
-    return $id;
+    return $name;
 }
 
 sub get_status_color_by_id {
@@ -75,12 +69,10 @@ sub get_status_color_by_id {
                            $cfg->param('pass'));
     my $sth = $dbh->prepare($query);
     $sth->execute;
-    my @row = $sth->fetchrow_array;
-    $color  = $row[0];
-    undef @row;
+    ($color) = $sth->fetchrow_array;
     $sth->finish();
     $dbh->disconnect();
-    return $id;
+    return $color;
 }
 
 sub get_status_color_list {
