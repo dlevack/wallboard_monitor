@@ -6,4 +6,4 @@ include_files
 * colors.php - Provides color to output from CLI scripts
 * db.php - PHP class file for MySQL database connections
 * ini_files.php - Class file for dealing with configuration files
-* WallboardDB.pm - Perl module for MySQL database connections
+* Wallboard - Perl module directory for wallboard system which will be placed in /usr/share/perl5/ directory during install
