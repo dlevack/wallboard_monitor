@@ -1,4 +1,4 @@
-package WallboardDB;
+package Wallboard::DB;
 use strict;
 use warnings;
 use Config::Simple;
@@ -93,7 +93,7 @@ sub get_status_color_list {
     $sth->execute;
     while (my @row = $sth->fetchrow_array) {
 	push(@colors,
-	     $row['STATUS_COLOR']);
+	     $row[0]);
     }
     $sth->finish();
     $dbh->disconnect();
