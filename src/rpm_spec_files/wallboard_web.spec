@@ -25,11 +25,17 @@ This is the wallboard monitoring system web server files.
 install -m 0755 -d $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web
 install -m 0755 -d $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/images
 install -m 0755 -d $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/css
+install -m 0755 -d $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/admin
 install -m 0755 -d $RPM_BUILD_ROOT/etc/httpd/conf.d
 install -m 0755 -d $RPM_BUILD_ROOT/opt/wallboard_monitor/sbin
 install -m 0644 apache_conf/wallboard_monitor.conf $RPM_BUILD_ROOT/etc/httpd/conf.d/wallboard_monitor.conf
 install -m 0744 sbin/gen_wallboard_images.pl $RPM_BUILD_ROOT/opt/wallboard_monitor/sbin/gen_wallboard_images.pl
 install -m 0644 css/wallboard.css $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/css/wallboard.css
+install -m 0644 admin/index.php $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/admin/index.php
+install -m 0644 admin/login.php $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/admin/login_php
+install -m 0644 admin/login_process.php $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/admin/login_process.php
+install -m 0644 admin/logout.php $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/admin/logout.php
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -44,9 +50,14 @@ rm -rf $RPM_BUILD_ROOT
 %dir /opt/wallboard_monitor/wallboard_web
 %dir /opt/wallboard_monitor/wallboard_web/images
 %dir /opt/wallboard_monitor/wallboard_web/css
+%dir /opt/wallboard_monitor/wallboard_web/admin
 /etc/httpd/conf.d/wallboard_monitor.conf
 /opt/wallboard_monitor/sbin/gen_wallboard_images.pl
 /opt/wallboard_monitor/wallboard_web/css/wallboard.css
+/opt/wallboard_monitor/wallboard_web/admin/index.php
+/opt/wallboard_monitor/wallboard_web/admin/login.php
+/opt/wallboard_monitor/wallboard_web/admin/login_process.php
+/opt/wallboard_monitor/wallboard_web/admin/logout.php
 
 %defattr(-,root,root,-)
 %doc
