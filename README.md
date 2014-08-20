@@ -15,7 +15,7 @@ Basicly, this system does a lot of the same things. The big difference is the da
 the information and pulling realtime data from the database. Once the system recieves an update that information is displayed once the page
 refreshes.
 
-Unfortunatly, all of the code written for my previous job is still there and I am not. So, I will be rewiting it from scratch.
+Unfortunatly, all of the code written for my previous job is still there and I am not. So, I will be rewriting it from scratch.
 
 Requirements
 ------------
