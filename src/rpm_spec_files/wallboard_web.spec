@@ -32,7 +32,7 @@ install -m 0644 apache_conf/wallboard_monitor.conf $RPM_BUILD_ROOT/etc/httpd/con
 install -m 0744 sbin/gen_wallboard_images.pl $RPM_BUILD_ROOT/opt/wallboard_monitor/sbin/gen_wallboard_images.pl
 install -m 0644 css/wallboard.css $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/css/wallboard.css
 install -m 0644 admin/index.php $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/admin/index.php
-install -m 0644 admin/login.php $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/admin/login_php
+install -m 0644 admin/login.php $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/admin/login.php
 install -m 0644 admin/login_process.php $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/admin/login_process.php
 install -m 0644 admin/logout.php $RPM_BUILD_ROOT/opt/wallboard_monitor/wallboard_web/admin/logout.php
 
