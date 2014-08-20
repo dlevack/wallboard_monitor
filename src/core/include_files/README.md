@@ -7,3 +7,4 @@ include_files
 * db.php - PHP class file for MySQL database connections
 * ini_files.php - Class file for dealing with configuration files
 * Wallboard - Perl module directory for wallboard system which will be placed in /usr/share/perl5/ directory during install
+* web.php - Provides methods for generating web pages for the system
