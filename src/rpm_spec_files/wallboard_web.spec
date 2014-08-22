@@ -42,7 +42,7 @@ install -m 0744 bin/gen_wallboard_images $RPM_BUILD_ROOT/opt/wallboard_monitor/b
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/opt/wallboard_monitor/sbin/gen_wallboard_images
+/opt/wallboard_monitor/bin/gen_wallboard_images
 /etc/init.d/httpd reload
 
 %postun
