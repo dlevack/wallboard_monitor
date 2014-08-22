@@ -17,7 +17,7 @@ refreshes.
 
 Unfortunatly, all of the code written for my previous job is still there and I am not. So, I will be rewriting it from scratch.
 
-One upside of rewriting it from scratch is the ability to write better code. Originally the system was writen Perl, PHP, and bash scripts. For this
+One upside of rewriting it from scratch is the ability to write better code. Originally the system was writen in Perl, PHP, and bash scripts. For this
 rewite I am attemting to write portions in C++ which should provide improved performance.
 
 Requirements
