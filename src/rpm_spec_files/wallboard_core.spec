@@ -16,8 +16,11 @@ Requires:	php-mysql >= 5.0
 This is the wallboard monitoring system core files.
 
 %prep
+
 %setup -q
 %build
+cd bin
+make
 
 %install
 install -m 0755 -d $RPM_BUILD_ROOT/opt/wallboard_monitor
