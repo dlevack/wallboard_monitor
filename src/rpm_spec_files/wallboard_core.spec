@@ -34,7 +34,7 @@ install -m 0644 include_files/ini_files.php $RPM_BUILD_ROOT/opt/wallboard_monito
 install -m 0644 include_files/Wallboard/DB.pm $RPM_BUILD_ROOT/usr/share/perl5/Wallboard/DB.pm
 install -m 0644 conf_files/db.conf $RPM_BUILD_ROOT/opt/wallboard_monitor/conf_files/db.conf
 install -m 0644 include_files/web.php $RPM_BUILD_ROOT/opt/wallboard_monitor/include_files/web.php
-install -m 0644 bin/db_config $RPM_BUILD_ROOT/opt/wallboard_monitor/bin/db_config
+install -m 0744 bin/db_config $RPM_BUILD_ROOT/opt/wallboard_monitor/bin/db_config
 
 %clean
 rm -rf $RPM_BUILD_ROOT
