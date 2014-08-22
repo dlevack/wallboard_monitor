@@ -54,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir /opt/wallboard_monitor/wallboard_web/css
 %dir /opt/wallboard_monitor/wallboard_web/admin
 /etc/httpd/conf.d/wallboard_monitor.conf
-/opt/wallboard_monitor/sbin/gen_wallboard_images
+/opt/wallboard_monitor/bin/gen_wallboard_images
 /opt/wallboard_monitor/wallboard_web/css/wallboard.css
 /opt/wallboard_monitor/wallboard_web/admin/index.php
 /opt/wallboard_monitor/wallboard_web/admin/login.php
