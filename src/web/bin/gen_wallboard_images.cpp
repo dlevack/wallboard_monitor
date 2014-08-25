@@ -10,8 +10,6 @@
 #include <cppconn/statement.h>
 #include <cppconn/prepared_statement.h>
 
-#define CONF_FILE "/opt/wallboard_monitor/conf_files/db.conf"
-
 using namespace std; 
 using namespace Magick; 
 
