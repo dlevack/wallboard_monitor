@@ -3,43 +3,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "headers/INIReader.h"
 
 #define CONF_FILE "/opt/wallboard_monitor/conf_files/db.conf"
 using namespace std;
 
 string host;
-string database;
+string name;
 string user;
 string pass;
 int option;
 
-string strip(string in) {
-  string final;
-  for(int i = 0; i < in.length(); i++) {
-    if(in[i] != '"') {
-      final += in[i];
-    }
-  }
-  return final;
-}
+string getwallhost();
+string getwallname();
+string getwalluser();
+string getwallpass();
 
 int main(int argc, const char **argv) {
-  INIReader reader(CONF_FILE);
-  if (reader.ParseError() < 0) {
-    cout << "Can't load 'db.conf'\n";
-    return 1;
-  }
   
-  host     = strip(reader.Get("", "host", "UNKNOWN"));
-  database = strip(reader.Get("", "name", "UNKNOWN"));
-  user     = strip(reader.Get("", "user", "UNKNOWN"));
-  pass     = strip(reader.Get("", "pass", "UNKNOWN"));
+  host     = getwallhost();
+  name     = getwallname();
+  user     = getwalluser();
+  pass     = getwallpass();
   
   while (option != 5) {
     system("clear");
     cout << "[1]     Host: " << host << "\n";
-    cout << "[2] Database: " << database << "\n";
+    cout << "[2] Database: " << name << "\n";
     cout << "[3]     User: " << user << "\n";
     cout << "[4] Password: " << pass << "\n";
     cout << "[5] Quit\n";
@@ -52,7 +41,7 @@ int main(int argc, const char **argv) {
     }
     if (option == 2) {
       cout << "Database: ";
-      cin  >> database;
+      cin  >> name;
     }
     if (option == 3) {
       cout << "Username: ";
@@ -67,7 +56,7 @@ int main(int argc, const char **argv) {
   ofstream myfile;
   myfile.open (CONF_FILE);
   myfile << "host = \"" << host  << "\"\n";
-  myfile << "name = \"" << database  << "\"\n";
+  myfile << "name = \"" << name  << "\"\n";
   myfile << "user = \"" << user  << "\"\n";
   myfile << "pass = \"" << pass  << "\"\n";
   myfile.close();
