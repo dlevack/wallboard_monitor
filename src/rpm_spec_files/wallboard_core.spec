@@ -11,6 +11,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:	perl >= 5.0
 Requires:	php >= 5.0
 Requires:	php-mysql >= 5.0
+Requires:	wallboard_shared
 
 %description
 This is the wallboard monitoring system core files.
