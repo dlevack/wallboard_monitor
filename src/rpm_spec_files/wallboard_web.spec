@@ -13,6 +13,7 @@ Requires:	php >= 5.0
 Requires:	php-mysql >= 5.0
 Requires:	wallboard_core >= 0.1
 Requires:	ImageMagick
+Requires:	ImageMagick-c++
 
 %description
 This is the wallboard monitoring system web server files.
