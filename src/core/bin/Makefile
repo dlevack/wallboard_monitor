@@ -1,14 +1,7 @@
-CC = g++
-CFLAGS = -c
-LDFLAGS = 
-SOURCES = ini.cpp INIReader.cpp db_config.cpp
-OBJECTS = $(SOURCES:.cpp=.o)
-EXECUTABLE = db_config
+all: db_config
 
-all: $(EXECUTABLE)
-
-$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+db_config: db_config.cpp
+	g++ -Wall db_config.cpp -lwallconf -o db_config
 
 clean:
-	rm -f $(EXECUTABLE) $(OBJECTS)
+	rm -f db_config
