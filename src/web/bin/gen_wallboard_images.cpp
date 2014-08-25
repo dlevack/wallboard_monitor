@@ -2,7 +2,6 @@
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
-#include "headers/INIReader.h"
 #include <Magick++.h> 
 #include "mysql_connection.h"
 #include <cppconn/driver.h>
@@ -17,33 +16,22 @@ using namespace std;
 using namespace Magick; 
 
 string host;
-string database;
+string name;
 string user;
 string pass;
 
-string strip(string in) {
-  string final;
-  for(int i = 0; i < in.length(); i++) {
-    if(in[i] != '"') {
-      final += in[i];
-    }
-  }
-  return final;
-}
+string getwallhost();
+string getwallname();
+string getwalluser();
+string getwallpass();
 
 int main(int argc,char **argv)  { 
-  INIReader reader(CONF_FILE);
-
-  if (reader.ParseError() < 0) {
-    cout << "Can't load '" << CONF_FILE << "'\n";
-    return 1;
-  }
-
-  host     = strip(reader.Get("", "host", "UNKNOWN"));
-  database = strip(reader.Get("", "name", "UNKNOWN"));
-  user     = strip(reader.Get("", "user", "UNKNOWN"));
-  pass     = strip(reader.Get("", "pass", "UNKNOWN"));
-
+  
+  host = getwallhost();
+  name = getwallname();
+  user = getwalluser();
+  pass = getwallpass();
+  
   try { 
     sql::Connection *con;                         // Define connection handler
     sql::Statement *stmt;                         // Define statement handler
@@ -57,16 +45,12 @@ int main(int argc,char **argv)  {
     string imagefile;
     string imagepath = "/opt/wallboard_monitor/wallboard_web/images/";
     
-    string db(argc > 1 ? argv[1] : database);     // Define db variable which will be either provided
-                                                  // By command line or pulled from config file if not
-                                                  // Provided on command line.
-
-    con = driver->connect(host,                   // Connect to database host
+      con = driver->connect(host,                   // Connect to database host
                           user,
                           pass);
-    con->setSchema(db);                           // Select database on host
+    con->setSchema(name);                           // Select database on host
     stmt = con->createStatement();
-
+    
     res = stmt->executeQuery("SELECT STATUS_COLOR FROM Status_Table");
     while (res->next()) {
       color = res->getString("STATUS_COLOR");
