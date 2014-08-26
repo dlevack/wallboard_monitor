@@ -2,7 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
-#include <string>
+#include <string.h>
 #include <stdexcept>
 #include "mysql_connection.h"
 #include <cppconn/driver.h>
@@ -12,6 +12,10 @@
 #include <cppconn/prepared_statement.h>
 #include <stdio.h>
 #include <algorithm>
+#include<sys/socket.h>
+#include<errno.h>
+#include<netdb.h>
+#include<arpa/inet.h>
 
 #define MAX 1024
 
@@ -46,6 +50,29 @@ const size_t MAXWIDTH = 100;
 void print(const std::string& var_text) {
   std::cout << std::left << std::setw(MAXWIDTH) << std::setfill('.')
             << var_text ;
+}
+
+int hostname_to_ip(char * hostname,
+                   char* ip) {
+  struct hostent *he;
+  struct in_addr **addr_list;
+  int i;
+
+  if ( (he = gethostbyname( hostname ) ) == NULL) {
+    // get the host info
+    herror("gethostbyname");
+    return 1;
+  }
+
+  addr_list = (struct in_addr **) he->h_addr_list;
+
+  for(i = 0; addr_list[i] != NULL; i++) {
+    //Return the first one;
+    strcpy(ip,
+           inet_ntoa(*addr_list[i]));
+    return 0;
+  }
+  return 1;
 }
 
 string host;
@@ -291,6 +318,38 @@ int main(int argc, const char **argv) {
   }
   query.clear();
   
+  /* Add the this host to host table */
+
+  char hostname[1024];
+  gethostname(hostname,
+              1024);
+  char ip[100];
+
+  hostname_to_ip(hostname,
+                 ip);
+  text  = "Adding ";
+  text += hostname;
+  text += " to Host_Table";
+  print(text);
+  query  = "insert into Host_Table (HOST_NAME, HOST_IP) values";
+  query += "('";
+  query += hostname;
+  query += "','";
+  query += ip;
+  query += "')";
+  try {
+    stmt->execute(query);
+    cout << "[" << greentext("OK") << "]";
+    cout << "\n";
+  }
+  catch (sql::SQLException &e) {
+    cout << "[" << redtext("Failed") << "]";
+    cout << "\n";
+    return EXIT_FAILURE;
+  }
+  query.clear();
+  
+
   /* Add the status table */
   text  = "Adding Status_Table to database";
   print(text);
