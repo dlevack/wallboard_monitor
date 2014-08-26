@@ -24,7 +24,7 @@ make
 
 %install
 install -m 0755 -d $RPM_BUILD_ROOT/opt/wallboard_monitor/bin
-install -m 0744 sbin/install_db $RPM_BUILD_ROOT/opt/wallboard_monitor/sbin/install_db
+install -m 0744 bin/install_db $RPM_BUILD_ROOT/opt/wallboard_monitor/bin/install_db
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -35,7 +35,7 @@ echo "Run the /opt/wallboard_monitor/bin/install_db script to config database se
 %postun
 
 %files
-/opt/wallboard_monitor/sbin/install_db
+/opt/wallboard_monitor/bin/install_db
 
 %defattr(-,root,root,-)
 %doc
