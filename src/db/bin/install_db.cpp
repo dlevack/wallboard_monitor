@@ -318,7 +318,7 @@ int main(int argc, const char **argv) {
   }
   query.clear();
   
-  /* Add the this host to host table */
+  /* Add this host to host table */
 
   char hostname[1024];
   gethostname(hostname,
