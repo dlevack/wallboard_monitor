@@ -1,5 +1,5 @@
 CC = c++
-CFLAGS = -O2 `Magick++-config --cppflags --cxxflags --ldflags --libs` -lwallconf -lmysqlcppconn
+CFLAGS = -O2 `Magick++-config --cppflags --cxxflags --ldflags --libs` -lwallconf -lwalldb -lmysqlcppconn
 SOURCES = gen_wallboard_images.cpp
 EXECUTABLE = gen_wallboard_images
 
