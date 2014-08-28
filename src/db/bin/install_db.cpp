@@ -374,7 +374,7 @@ int main(int argc, const char **argv) {
   print(text);
   query  = "insert into Status_Table (STATUS_NAME,STATUS_COLOR) values";
   query += "('Unknown','white'),";
-  query += "('disabled','blue'),";
+  query += "('Disabled','blue'),";
   query += "('OK','green'),";
   query += "('Warning','yellow'),";
   query += "('Critical','red')";
