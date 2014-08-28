@@ -26,7 +26,7 @@ make
 install -m 0755 -d $RPM_BUILD_ROOT/usr/lib64
 
 install -m 0755 conf/libwallconf.so.1.0 $RPM_BUILD_ROOT/usr/lib64/libwallconf.so.1.0
-install -m 0755 conf/libwalldb.so.1.0 $RPM_BUILD_ROOT/usr/lib64/libwalldb.so.1.0
+install -m 0755 db/libwalldb.so.1.0 $RPM_BUILD_ROOT/usr/lib64/libwalldb.so.1.0
 
 %clean
 rm -rf $RPM_BUILD_ROOT
