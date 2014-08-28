@@ -19,11 +19,14 @@ This is the wallboard monitoring system shared library files.
 %build
 cd conf
 make
+cd ../db
+make
 
 %install
 install -m 0755 -d $RPM_BUILD_ROOT/usr/lib64
 
 install -m 0755 conf/libwallconf.so.1.0 $RPM_BUILD_ROOT/usr/lib64/libwallconf.so.1.0
+install -m 0755 conf/libwalldb.so.1.0 $RPM_BUILD_ROOT/usr/lib64/libwalldb.so.1.0
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -32,9 +35,12 @@ rm -rf $RPM_BUILD_ROOT
 cd /usr/lib64/
 ln -sf libwallconf.so.1.0 libwallconf.so
 ln -sf libwallconf.so.1.0 libwallconf.so.1
+ln -sf libwalldb.so.1.0 libwalldb.so
+ln -sf libwalldb.so.1.0 libwalldb.so.1
 
 %files
 /usr/lib64/libwallconf.so.1.0
+/usr/lib64/libwalldb.so.1.0
 
 %defattr(-,root,root,-)
 %doc
