@@ -38,6 +38,12 @@ ln -sf libwallconf.so.1.0 libwallconf.so.1
 ln -sf libwalldb.so.1.0 libwalldb.so
 ln -sf libwalldb.so.1.0 libwalldb.so.1
 
+%postun
+rm -f libwallconf.so
+rm -f libwallconf.so.1
+rm -f libwalldb.so
+rm -f libwalldb.so.1
+
 %files
 /usr/lib64/libwallconf.so.1.0
 /usr/lib64/libwalldb.so.1.0
