@@ -33,4 +33,3 @@ Tested with the following. May work on earlier versions but has not been tested.
 - Perl Modules
  - Config::Simple
  - DBI
- - Image::Magick
