@@ -103,6 +103,22 @@ void connect(string h,
 
 }
 
+int try_query(string query,
+	      string ok,
+	      string fail) {
+  try {
+    stmt->execute(query);
+    cout << "[" << greentext(ok) << "]";
+    cout << "\n";
+    return EXIT_SUCCESS;
+  }
+  catch (sql::SQLException &e) {
+    cout << "[" << redtext(fail) << "]";
+    cout << "\n";
+    return EXIT_FAILURE;
+  }
+}
+
 int main(int argc, const char **argv) {
   string query;
   
@@ -193,14 +209,9 @@ int main(int argc, const char **argv) {
     
     query  = "drop database ";
     query += name;
-    try {
-      stmt->execute(query);
-      cout << "[" << greentext("OK") << "]";
-      cout << "\n";
-    }
-    catch (sql::SQLException &e) {
-      cout << "[" << redtext("Failed") << "]";
-      cout << "\n";
+    if (try_query(query,
+		  "OK",
+		  "Failed") == EXIT_FAILURE) {
       return EXIT_FAILURE;
     }
     query.clear();
@@ -214,14 +225,9 @@ int main(int argc, const char **argv) {
     query  = "delete from user where User='";
     query += user;
     query += "'";
-    try {
-      stmt->execute(query);
-      cout << "[" << greentext("OK") << "]";
-      cout << "\n";
-    }
-    catch (sql::SQLException &e) {
-      cout << "[" << redtext("Failed") << "]";
-      cout << "\n";
+    if (try_query(query,
+                  "OK",
+                  "Failed") == EXIT_FAILURE) {
       return EXIT_FAILURE;
     }
     query.clear();
@@ -236,14 +242,9 @@ int main(int argc, const char **argv) {
   print(text);
   query  = "create database ";
   query += name;
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -260,14 +261,9 @@ int main(int argc, const char **argv) {
   query += "'@'localhost' identified by '";
   query += pass;
   query += "'";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -284,14 +280,9 @@ int main(int argc, const char **argv) {
   query += "'@'%' identified by '";
   query += pass;
   query += "'";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -306,14 +297,9 @@ int main(int argc, const char **argv) {
   query += "HOST_IP varchar(15) not null,";
   query += "HOST_STATUS int not null default 1,";
   query += "Primary Key(HOST_ID))";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -337,14 +323,9 @@ int main(int argc, const char **argv) {
   query += "','";
   query += ip;
   query += "')";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -357,14 +338,9 @@ int main(int argc, const char **argv) {
   query += "STATUS_NAME varchar(10) not null,";
   query += "STATUS_COLOR varchar(10) not null,";
   query += "Primary Key(STATUS_ID))";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -378,14 +354,9 @@ int main(int argc, const char **argv) {
   query += "('OK','green'),";
   query += "('Warning','yellow'),";
   query += "('Critical','red')";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -397,14 +368,9 @@ int main(int argc, const char **argv) {
   query += "PAGE_NAME varchar(50) not null,";
   query += "PAGE_DESC varchar(255) not null,";
   query += "Primary Key(PAGE_ID))";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -414,14 +380,9 @@ int main(int argc, const char **argv) {
   print(text);
   query  = "insert into Page_Table (PAGE_NAME,PAGE_DESC) values";
   query += "('Default','Default page - Displayed if no page is specified')";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -433,14 +394,9 @@ int main(int argc, const char **argv) {
   query += "CAT_NAME varchar(50) not null,";
   query += "CAT_DESC varchar(255) not null,";
   query += "Primary Key(CAT_ID))";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -450,14 +406,9 @@ int main(int argc, const char **argv) {
   print(text);
   query  = "insert into Category_Table (CAT_NAME,CAT_DESC) values";
   query += "('Wallboard Servers','Servers that are part of the monitoring system')";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -468,14 +419,9 @@ int main(int argc, const char **argv) {
   query  = "create table Page_Category_Table (PAGE_ID int not null,";
   query += "CAT_ID int not null,";
   query += "Primary Key(PAGE_ID,CAT_ID))";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -485,14 +431,9 @@ int main(int argc, const char **argv) {
   print(text);
   query  = "insert into Page_Category_Table (PAGE_ID,CAT_ID) values";
   query += "(1,1)";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -503,14 +444,9 @@ int main(int argc, const char **argv) {
   query  = "create table Category_Host_Table (CAT_ID int not null,";
   query += "HOST_ID int not null,";
   query += "Primary Key(CAT_ID,HOST_ID))";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -522,14 +458,9 @@ int main(int argc, const char **argv) {
   query += "USER_NAME varchar(20) not null,";
   query += "USER_PASS varchar(255) not null,";
   query += "Primary Key(USER_ID))";
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
@@ -557,14 +488,9 @@ int main(int argc, const char **argv) {
   query += adminpass;
   query += "')";
   
-  try {
-    stmt->execute(query);
-    cout << "[" << greentext("OK") << "]";
-    cout << "\n";
-  }
-  catch (sql::SQLException &e) {
-    cout << "[" << redtext("Failed") << "]";
-    cout << "\n";
+  if (try_query(query,
+		"OK",
+		"Failed") == EXIT_FAILURE) {
     return EXIT_FAILURE;
   }
   query.clear();
