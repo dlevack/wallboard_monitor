@@ -8,3 +8,4 @@ src
 * shared  - Files included in shared library rpm (C++ shared libraries)
 * web - Files included in the web rpm
 * VERSION - Used to specify the version during jenkins build process
+
