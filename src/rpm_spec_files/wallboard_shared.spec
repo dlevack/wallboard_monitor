@@ -1,6 +1,6 @@
 Name:           wallboard_shared
-Version:        0.1
-Release:        0.1
+Version:        %{Version}
+Release:        %{Release}
 Summary:        Wallboard monitoring system shared library files
 Vendor:         levack.net
 Group:          mointoring
