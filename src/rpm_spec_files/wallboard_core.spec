@@ -1,6 +1,6 @@
 Name:           wallboard_core
-Version:        0.1
-Release:        0.1
+Version:        %{Version}
+Release:        %{Release}
 Summary:        Wallboard monitoring system core files
 Vendor:         levack.net
 Group:          mointoring

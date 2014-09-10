@@ -1,6 +1,6 @@
 Name:           wallboard_db
-Version:        0.1
-Release:        0.1
+Version:        %{Version}
+Release:        %{Release}
 Summary:        Wallboard monitoring system database server files
 Vendor:         levack.net
 Group:          monitoring
