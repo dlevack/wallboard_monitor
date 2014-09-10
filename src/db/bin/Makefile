@@ -1,5 +1,5 @@
 CC = c++
-CFLAGS = -lwallconf -lmysqlcppconn
+CFLAGS = -L/var/lib/jenkins/jobs/Wallboard/workspace/libs -lwallconf -lmysqlcppconn
 SOURCES = install_db.cpp
 EXECUTABLE = install_db
 
