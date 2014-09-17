@@ -10,7 +10,7 @@ Source0:        %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:	php >= 5.0
 Requires:	php-mysql >= 5.0
-Requires:	wallboard_core >= 0.1
+Requires:	wallboard_core >= %{Version}-%{Release}
 Requires:	ImageMagick
 Requires:	ImageMagick-c++
 
