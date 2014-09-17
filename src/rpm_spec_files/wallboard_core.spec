@@ -44,7 +44,6 @@ install -m 0744 bin/db_config $RPM_BUILD_ROOT/opt/wallboard_monitor/bin/db_confi
 rm -rf $RPM_BUILD_ROOT
 
 %post
-echo "Please run /opt/wallboard_monitor/bin/db_config to verify database config"
 
 %files
 %dir /opt/wallboard_monitor

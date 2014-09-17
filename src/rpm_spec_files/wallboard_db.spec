@@ -28,7 +28,6 @@ install -m 0744 bin/install_db $RPM_BUILD_ROOT/opt/wallboard_monitor/bin/install
 rm -rf $RPM_BUILD_ROOT
 
 %post
-echo "Run the /opt/wallboard_monitor/bin/install_db script to config database server."
 
 %postun
 
